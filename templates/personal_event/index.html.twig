@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PersonalEvent index{% endblock %}
+
+{% block body %}
+    <h1>PersonalEvent index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>BeginAt</th>
+                <th>EndAt</th>
+                <th>Title</th>
+                <th>Comment</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for personal_event in personal_events %}
+            <tr>
+                <td>{{ personal_event.id }}</td>
+                <td>{{ personal_event.beginAt ? personal_event.beginAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ personal_event.endAt ? personal_event.endAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ personal_event.title }}</td>
+                <td>{{ personal_event.comment }}</td>
+                <td>
+                    <a href="{{ path('personal_event_show', {'id': personal_event.id}) }}">show</a>
+                    <a href="{{ path('personal_event_edit', {'id': personal_event.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('personal_event_new') }}">Create new</a>
+{% endblock %}
