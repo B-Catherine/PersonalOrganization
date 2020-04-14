@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminlte.html.twig' %}
 
-{% block title %}PersonalEvent index{% endblock %}
+{% block title %}Calendrier{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -12,9 +12,7 @@
     {{ encore_entry_script_tags('calendar') }}
 {% endblock %}
 
-{% block body %}
-    <h1>PersonalEvent index</h1>
-
+{% block mainContent %}
     <table class="table">
         <thead>
             <tr>
