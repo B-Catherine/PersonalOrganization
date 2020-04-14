@@ -3,15 +3,16 @@ import 'admin-lte/plugins/fullcalendar-daygrid/main.min.css';
 import 'admin-lte/plugins/fullcalendar-timegrid/main.min.css';
 import 'admin-lte/plugins/fullcalendar-bootstrap/main.min.css';
 
-import * as FullCalendar from '@fullcalendar/core';
+import { Calendar } from '@fullcalendar/core';
+import frLocale from '@fullcalendar/core/locales/fr';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import * as interactionPlugin from '@fullcalendar/interaction';
+import interactionPlugin, * as FullCalendarInteraction from '@fullcalendar/interaction';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
 import luxonPlugin from '@fullcalendar/luxon';
 
 document.addEventListener('DOMContentLoaded', function() {
-
+    
     /* initialize the external events
      -----------------------------------------------------------------*/
     function ini_events(ele) {
@@ -44,8 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         m    = date.getMonth(),
         y    = date.getFullYear();
     
-    var Calendar = FullCalendar.Calendar;
-    var Draggable = interactionPlugin.Draggable;
+    var Draggable = FullCalendarInteraction.Draggable;
 
     var containerEl = document.getElementById('external-events');
     var checkbox = document.getElementById('drop-remove');
@@ -75,7 +75,10 @@ document.addEventListener('DOMContentLoaded', function() {
         right : 'dayGridMonth,timeGridWeek,timeGridDay'
       },
       'themeSystem': 'bootstrap',
-      titleFormat: 'LLLL d, yyyy', // you can now use format strings
+      titleFormat: 'd LLLL yyyy', // you can now use format strings,
+      locale: frLocale,
+      firstDay: 1,
+      nowIndicator: true,
       //Random default events
       events    : [
         {
