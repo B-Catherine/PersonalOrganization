@@ -13,6 +13,10 @@ import '../css/app.css';
 
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
-import $ from 'jquery';
-import adminlte from 'admin-lte';
+import 'admin-lte';
+
+import $ from 'admin-lte/plugins/jquery/jquery';
+global.$ = global.jQuery = $;
+
+import 'admin-lte/plugins/jquery-ui/jquery-ui';
 import 'admin-lte/dist/css/adminlte.min.css';

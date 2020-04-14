@@ -1,4 +1,5 @@
 var Encore = require('@symfony/webpack-encore');
+var webpack = require('webpack');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -24,6 +25,7 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
+    .addEntry('calendar', './assets/js/calendar.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
@@ -74,6 +76,19 @@ Encore
         fonts: { limit: 4096 },
         images: { limit: 4096 }
     })
+    .addPlugin(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/))
+    .autoProvideVariables({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+    })
 ;
 
-module.exports = Encore.getWebpackConfig();
+const config = Encore.getWebpackConfig();
+
+// Force Webpack to display errors/warnings
+config.stats.errors = true;
+config.stats.warnings = true;
+
+module.exports = config;
+//module.exports = Encore.getWebpackConfig();
