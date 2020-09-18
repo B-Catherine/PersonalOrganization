@@ -1,0 +1,10 @@
+{% extends 'adminlte.html.twig' %}
+
+{% block title %}Nouvel utilisateur{% endblock %}
+
+{% block mainContent %}
+
+    {{ include('user/_form.html.twig') }}
+
+    <a href="{{ path('user_index') }}">back to list</a>
+{% endblock %}
