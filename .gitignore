@@ -5,11 +5,13 @@
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
+/src/.preload.php
 /var/
 /vendor/
 /src/.preload.php
 /.idea
 *.lock
+composer.lock
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
